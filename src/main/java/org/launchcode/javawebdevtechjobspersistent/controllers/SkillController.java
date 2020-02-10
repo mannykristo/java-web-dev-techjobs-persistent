@@ -13,12 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Optional;
 
-public class SkillController {
-
 
     @Controller
     @RequestMapping("skills")
-    public class EmployerController {
+    public class SkillController {
 
         @Autowired
         private SkillRepository skillRepository;
@@ -40,7 +38,7 @@ public class SkillController {
 
             skillRepository.save(newSkill);
 
-            return "redirect:";
+            return "redirect:view/" + newSkill.getId();
         }
 
         @GetMapping("view/{skillId}")
@@ -57,4 +55,4 @@ public class SkillController {
         }
     }
 
-}
+
