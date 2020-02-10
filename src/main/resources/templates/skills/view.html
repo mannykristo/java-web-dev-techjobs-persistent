@@ -3,7 +3,7 @@
 <head th:replace="fragments :: head"></head>
 
 <body class="container  body-content">
-<h1 th:text="${'Skill: ' + skill.name}">Default Title</h1>
+<h1 th:text="${'Skill: ' + skill.getName()}">Default Title</h1>
 
 <nav th:replace="fragments :: page-header"></nav>
 
@@ -12,7 +12,7 @@
     <p th:text="${'Description: ' + skill.description}"></p>
     <p> Jobs:
         <ul>
-            <li th:each="job : ${skill.jobs}">
+            <li th:each="job : ${skill.getJobs()}">
                 <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}"></a>
             </li>
         </ul>

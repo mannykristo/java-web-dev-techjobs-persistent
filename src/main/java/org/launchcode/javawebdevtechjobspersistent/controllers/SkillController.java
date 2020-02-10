@@ -14,27 +14,26 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 
-    @Controller
-    @RequestMapping("skills")
-    public class SkillController {
+@Controller
+@RequestMapping("skills")
+public class SkillController {
 
-        @Autowired
-        private SkillRepository skillRepository;
+    @Autowired
+    private SkillRepository skillRepository;
 
+    @GetMapping("add")
+    public String displayAddSkillForm(Model model) {
+        model.addAttribute(new Skill());
+        return "skills/add";
+    }
 
-        @GetMapping("add")
-        public String displayAddSkillForm(Model model) {
-            model.addAttribute(new Skill());
-            return "skills/add";
-        }
-
-        @PostMapping("add")
-        public String processAddSkillForm(@ModelAttribute @Valid Skill newSkill,
+    @PostMapping("add")
+    public String processAddSkillForm(@ModelAttribute @Valid Skill newSkill,
                                              Errors errors, Model model) {
 
-            if (errors.hasErrors()) {
-                return "skills/add";
-            }
+        if (errors.hasErrors()) {
+            return "skills/add";
+        }
 
             skillRepository.save(newSkill);
 
